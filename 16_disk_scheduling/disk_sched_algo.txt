@@ -1,0 +1,13 @@
+1. Start.
+2. Read the initial head position and the sequence of disk requests.
+3. SSTF (Shortest Seek Time First):
+   - Always pick the request closest to the current head position.
+   - Update head position and add distance to total seek time.
+4. C-SCAN (Circular SCAN):
+   - Move head towards one end (e.g., right).
+   - Servicing requests along the way.
+   - At the end, jump back to the other end (0) and continue moving in the same direction.
+5. LOOK:
+   - Similar to SCAN but only goes as far as the last request in each direction before reversing.
+6. Calculate and print total head displacement for each algorithm.
+7. Stop.

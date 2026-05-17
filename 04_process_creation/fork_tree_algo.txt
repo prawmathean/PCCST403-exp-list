@@ -1,0 +1,9 @@
+1. Start.
+2. Print the current process ID (PID).
+3. Call fork() to create a new child process.
+4. Check the return value of fork:
+   - If 0, it is the child process. Print its PID and its parent's PID.
+   - If greater than 0, it is the parent. Print its PID and the child's PID.
+   - If negative, the fork failed.
+5. Use sleep() in the parent to make sure the child finishes its output before the parent exits.
+6. Stop.

@@ -1,0 +1,11 @@
+1. Start.
+2. Read page size and the number of entries in the page table.
+3. Read frame numbers for each page into an array (the page table).
+4. Read the logical address provided by the user.
+5. Calculate the page number: page_num = logical_address / page_size.
+6. Calculate the offset: offset = logical_address % page_size.
+7. Check if the page number exists in the page table.
+8. If it exists, find the frame number from the page table.
+9. Calculate physical address: physical_address = (frame_number * page_size) + offset.
+10. Print the result.
+11. Stop.

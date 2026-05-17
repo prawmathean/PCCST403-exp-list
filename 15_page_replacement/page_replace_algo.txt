@@ -1,0 +1,12 @@
+1. Start.
+2. Initialize an array for reference strings and an array for frames.
+3. FIFO (First-In-First-Out):
+   - For each page, if not in frames, replace the oldest page using a circular counter.
+   - Increment fault count if replaced.
+4. LRU (Least Recently Used):
+   - For each page, if not in frames, replace the page that was used furthest back in time.
+   - Track usage time for each frame entry.
+5. Optimal:
+   - For each page, if not in frames, replace the page that will not be used for the longest time in the future.
+6. Print the total page faults for each strategy.
+7. Stop.

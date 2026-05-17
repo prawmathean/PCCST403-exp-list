@@ -1,0 +1,9 @@
+1. Pipes: Create a pipe using pipe(fd). Parent forks. Child writes a string to fd[1], parent reads it from fd[0].
+2. Message Queue: Create a queue with msgget(). 
+   - Parent sends a string to the queue.
+   - Child receives it, checks if it's a palindrome by comparing start and end characters, and prints the result.
+3. Shared Memory: Create a memory segment with shmget() and attach with shmat().
+   - Parent writes "Hello World" to the shared segment.
+   - Child reads it, flips the case of each character (upper to lower and vice versa).
+   - Parent prints the modified string after child exits.
+4. Clean up IPC resources using msgctl and shmctl.
