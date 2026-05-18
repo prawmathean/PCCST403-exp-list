@@ -1,0 +1,14 @@
+Algorithm for Experiment 5: Process Image Replacement via execvp()
+
+1. Create a C program 'myadder.c' that takes two command-line arguments, converts them to integers, and prints their sum.
+2. Compile 'myadder.c' to create an executable named 'myadder'.
+3. Create another C program 'exec_test.c'.
+4. In 'exec_test.c', prompt the user for two integers.
+5. Call fork() to create a child process.
+6. In the child process:
+   a. Create an argument array (char *args[]) containing the path to 'myadder', the two integers as strings, and a NULL terminator.
+   b. Call execvp(args[0], args) to replace the child's image with 'myadder'.
+7. In the parent process:
+   a. Call wait(NULL) to wait for the child process to complete.
+   b. Print a confirmation message once the child finishes.
+8. Stop the program.

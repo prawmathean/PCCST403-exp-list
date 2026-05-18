@@ -1,9 +1,0 @@
-1. Start.
-2. Get the system clock ticks per second using sysconf.
-3. Call times() to capture initial CPU and wall-clock times.
-4. Run a large loop to simulate a task.
-5. Call times() again to capture final times.
-6. Subtract start values from end values.
-7. Divide by ticks to convert to seconds.
-8. Print User, System, and Real time.
-9. Stop.

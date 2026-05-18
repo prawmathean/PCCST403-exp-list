@@ -1,0 +1,17 @@
+Algorithm for Experiment 16: Disk Scheduling Algorithms
+
+1. Start the program.
+2. Read the initial head position and a list of disk requests.
+3. SSTF (Shortest Seek Time First):
+   a. Start from the current head position.
+   b. Find the request in the list that is closest to the head.
+   c. Move the head to that position and calculate the movement (seek time).
+   d. Remove that request from the list and repeat until all requests are serviced.
+4. LOOK Algorithm:
+   a. Sort the requests in ascending order.
+   b. Determine the direction of movement (e.g., increasing).
+   c. Service all requests in that direction until the last request is reached.
+   d. Reverse direction and service all remaining requests until the other end is reached.
+   e. Calculate the total movement by summing the differences between consecutive head positions.
+5. Print the servicing sequence and the total head movement for each algorithm.
+6. Stop the program.

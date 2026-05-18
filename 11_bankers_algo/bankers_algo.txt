@@ -1,0 +1,25 @@
+Algorithm for Experiment 11: Banker's Algorithm (Safety Check)
+
+1. Input:
+   a. Number of processes (n) and resources (m).
+   b. Allocation matrix (n x m).
+   c. Max matrix (n x m).
+   d. Available vector (1 x m).
+2. Calculate the Need matrix: Need[i][j] = Max[i][j] - Allocation[i][j].
+3. Initialize:
+   a. Finish array of size n to all 0s (false).
+   b. Work vector = Available vector.
+   c. Safe sequence array.
+4. While there are processes not finished:
+   a. Find a process 'i' such that Finish[i] == 0 and Need[i] <= Work.
+   b. If found:
+      i. Work = Work + Allocation[i].
+      ii. Finish[i] = 1.
+      iii. Add 'i' to the Safe Sequence.
+   c. If no such process is found after checking all remaining ones:
+      i. The system is in an UNSAFE state.
+      ii. Exit.
+5. If all processes are finished:
+   a. The system is in a SAFE state.
+   b. Print the Safe Sequence.
+6. Stop.

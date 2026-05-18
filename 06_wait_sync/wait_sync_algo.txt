@@ -1,0 +1,13 @@
+Algorithm for Experiment 6: Process Synchronization using wait()
+
+1. Start the program.
+2. Call fork() to create a child process.
+3. If the process is the child (pid == 0):
+   a. Print the string "PCCSL407 ".
+   b. Exit the child process.
+4. If the process is the parent (pid > 0):
+   a. Call wait(NULL) to block the parent until the child process terminates.
+   b. After the child finishes, print the string "Operating Systems Lab".
+   c. Exit the parent process.
+5. By using wait(), the parent ensures that its output follows the child's output.
+6. Stop the program.

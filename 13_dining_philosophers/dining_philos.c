@@ -1,70 +1,67 @@
-#include <stdio.h>
 #include <pthread.h>
 #include <semaphore.h>
+#include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
 
-/* Dining Philosophers - Deadlock Free */
+#define N 5 // Number of philosophers
 
-#define N 5
-#define THINKING 2
-#define HUNGRY 1
-#define EATING 0
-#define LEFT (phnum + 4) % N
-#define RIGHT (phnum + 1) % N
+sem_t forks[N];
 
-int state[N];
-int phil[N] = { 0, 1, 2, 3, 4 };
+void* philosopher(void* arg) {
+    int id = *(int*)arg;
 
-sem_t mutex;
-sem_t S[N];
-
-void test(int phnum) {
-    if (state[phnum] == HUNGRY && state[LEFT] != EATING && state[RIGHT] != EATING) {
-        state[phnum] = EATING;
-        sleep(2);
-        printf("Philosopher %d takes fork %d and %d\n", phnum + 1, LEFT + 1, phnum + 1);
-        printf("Philosopher %d is Eating\n", phnum + 1);
-        sem_post(&S[phnum]);
-    }
-}
-
-void take_fork(int phnum) {
-    sem_wait(&mutex);
-    state[phnum] = HUNGRY;
-    printf("Philosopher %d is Hungry\n", phnum + 1);
-    test(phnum);
-    sem_post(&mutex);
-    sem_wait(&S[phnum]);
-    sleep(1);
-}
-
-void put_fork(int phnum) {
-    sem_wait(&mutex);
-    state[phnum] = THINKING;
-    printf("Philosopher %d putting fork %d and %d down\n", phnum + 1, LEFT + 1, phnum + 1);
-    printf("Philosopher %d is thinking\n", phnum + 1);
-    test(LEFT);
-    test(RIGHT);
-    sem_post(&mutex);
-}
-
-void* philosopher(void* num) {
     while (1) {
-        int* i = num;
-        sleep(1);
-        take_fork(*i);
-        sleep(0);
-        put_fork(*i);
+        printf("Philosopher %d is thinking...\n", id);
+        sleep(rand() % 2 + 1);
+
+        // To avoid deadlock: 
+        // Even-numbered philosophers pick left then right
+        // Odd-numbered philosophers pick right then left
+        if (id % 2 == 0) {
+            sem_wait(&forks[id]); // Pick left
+            sem_wait(&forks[(id + 1) % N]); // Pick right
+        } else {
+            sem_wait(&forks[(id + 1) % N]); // Pick right
+            sem_wait(&forks[id]); // Pick left
+        }
+
+        printf("Philosopher %d is EATING 🍜\n", id);
+        sleep(rand() % 3 + 1);
+
+        // Put down forks
+        sem_post(&forks[id]);
+        sem_post(&forks[(id + 1) % N]);
+
+        printf("Philosopher %d finished eating.\n", id);
     }
+    return NULL;
 }
 
 int main() {
-    pthread_t thread_id[N];
-    sem_init(&mutex, 0, 1);
-    for (int i = 0; i < N; i++) sem_init(&S[i], 0, 0);
+    pthread_t threads[N];
+    int ids[N];
+
+    // Initialize semaphores (forks)
     for (int i = 0; i < N; i++) {
-        pthread_create(&thread_id[i], NULL, philosopher, &phil[i]);
-        printf("Philosopher %d is thinking\n", i + 1);
+        sem_init(&forks[i], 0, 1);
+        ids[i] = i;
     }
-    for (int i = 0; i < N; i++) pthread_join(thread_id[i], NULL);
+
+    // Create philosopher threads
+    for (int i = 0; i < N; i++) {
+        pthread_create(&threads[i], NULL, philosopher, &ids[i]);
+    }
+
+    // Join threads (in this case, it runs forever)
+    for (int i = 0; i < N; i++) {
+        pthread_join(threads[i], NULL);
+    }
+
+    // Cleanup
+    for (int i = 0; i < N; i++) {
+        sem_destroy(&forks[i]);
+    }
+
+    return 0;
 }

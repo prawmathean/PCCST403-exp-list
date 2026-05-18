@@ -1,12 +1,23 @@
-1. Start.
-2. Initialize an array for reference strings and an array for frames.
-3. FIFO (First-In-First-Out):
-   - For each page, if not in frames, replace the oldest page using a circular counter.
-   - Increment fault count if replaced.
-4. LRU (Least Recently Used):
-   - For each page, if not in frames, replace the page that was used furthest back in time.
-   - Track usage time for each frame entry.
-5. Optimal:
-   - For each page, if not in frames, replace the page that will not be used for the longest time in the future.
-6. Print the total page faults for each strategy.
-7. Stop.
+Algorithm for Experiment 15: Page-Replacement Algorithms
+
+1. Start the program.
+2. Read the number of page references (n) and the number of available frames (f).
+3. Generate or input a random reference string of length n (values 0-9).
+4. FIFO (First-In First-Out) Simulation:
+   a. Initialize frames to -1.
+   b. For each page in the reference string:
+      i. Check if the page is already in one of the frames.
+      ii. If not present (page fault):
+          - Replace the page in the 'next' frame (circularly incrementing index).
+          - Increment the fault count.
+5. LRU (Least Recently Used) Simulation:
+   a. Initialize frames and a 'last_used' timestamp array.
+   b. For each page in the reference string:
+      i. Check if the page is in one of the frames.
+      ii. If present: Update its timestamp in 'last_used' to the current index.
+      iii. If not present (page fault):
+          - Find the frame whose timestamp in 'last_used' is the smallest (oldest).
+          - Replace that page and update its timestamp.
+          - Increment the fault count.
+6. Print the fault results for both algorithms.
+7. Stop the program.

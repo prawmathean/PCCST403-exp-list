@@ -1,6 +1,0 @@
-1. Start.
-2. Open /proc/cpuinfo and search for "model name" to get the CPU type.
-3. Open /proc/meminfo and print "MemTotal" and "MemFree" for RAM details.
-4. Open /proc/stat and look for "procs_running" and "procs_blocked" to see process counts.
-5. Print all extracted information.
-6. Stop.

@@ -1,0 +1,23 @@
+Algorithm for Experiment 12: Deadlock Detection
+
+1. Input:
+   a. Number of processes (n) and resources (m).
+   b. Allocation matrix.
+   c. Request matrix (Current requests).
+   d. Available vector.
+2. Initialize:
+   a. Work = Available.
+   b. For i = 1 to n:
+      If Allocation[i] != 0, Finish[i] = false;
+      Else, Finish[i] = true.
+3. Search for a process 'i' such that Finish[i] == false and Request[i] <= Work.
+4. If such 'i' exists:
+   a. Work = Work + Allocation[i].
+   b. Finish[i] = true.
+   c. Go back to step 3.
+5. If no such 'i' exists and there are still processes where Finish[i] == false:
+   a. Those processes are deadlocked.
+   b. System is in a deadlock state.
+6. If all processes have Finish[i] == true:
+   a. System is not deadlocked.
+7. Stop.

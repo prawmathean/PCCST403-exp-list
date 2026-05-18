@@ -1,0 +1,76 @@
+Act as an Engineering college student from KTU. I need you to generate a structured laboratory workspace for 16 Operating Systems experiments. 
+
+Provide your output strictly inside a clear bash script or single file block structure that creates the folders and writes the file contents directly using standard Linux utilities (like mkdir and cat << 'EOF').
+
+CRITICAL FILE STRUCTURING & NAMING RULES:
+1. Every experiment must have its own dedicated directory named after the experiment topic (e.g., "05_execvp_adder", "13_dining_philosophers").
+2. Inside each folder, create a C source file. The filename must be a clean, concise, lowercase abbreviation of the lab (e.g., "myadder.c", "dining_philos.c").
+3. Inside each folder, create a plain text file containing a clear, numbered step-by-step algorithm named exactly "exp_name_algo.txt" (e.g., "dining_philos_algo.txt").
+
+CODE ARCHITECTURE & QUALITY CONSTRAINTS:
+- Language: Strict C (C99 or C11 standard). Use proper system/POSIX headers (<unistd.h>, <pthread.h>, <semaphore.h>, <sys/ipc.h>, etc.) depending on the task context.
+- User Inputs: Do NOT hardcode test criteria variables. The code must be production-grade and intuitive, accepting user input via arrays, standard input processing (scanf), or command-line parameters (argc/argv) exactly like a real physical laboratory execution.
+- Code Comments: ABSOLUTELY NO generic, verbose, or conversational AI comment blocks (e.g., avoids paragraphs explaining what an 'if' statement does). Keep comments minimal, dense, strategic, and human-like in the core functions only.
+- Executable Image Replacement (Exp 5): Provide BOTH C programs cleanly so they compile together correctly.
+
+Generate this complete folder framework, the corresponding intuitive production-ready source files, and algorithms for the following specific experiment matrix - the code has to get the AIM right and also , do not hardcode stuffs , it should ask the user for inputs whenever possible :
+
+
+Experiment 1: Basic Linux Programming Commands
+Aim: Familiarisation with basic Linux programming commands: ps, strace, gdb, strings, objdump, nm, file, od, xxd, time, fuser, top.
+
+Experiment 2: Machine Information Retrieval via /proc System
+Aim: Use the /proc file system to gather basic information about your machine:
+  (a) Number of CPU cores
+  (b) Total memory and the fraction of free memory
+  (c) Number of processes currently running
+  (d) Number of processes in the running and blocked states
+  (e) Number of processes forked since the last bootup and comparing this value with currently running processes
+  (f) The number of context switches performed since the last bootup for a particular process.
+
+Experiment 3: Process Execution Time Analysis via /proc
+Aim: Write a simple program to print the system time and execute it. Then use the /proc file system to determine how long this program (the corresponding process) ran in user and kernel modes.
+
+Experiment 4: Process Creation using Fork
+Aim: Create a new process using a fork system call. Print the parent and child process IDs. Use the pstree command to find the process tree for the child process starting from the init process.
+
+Experiment 5: Process Image Replacement using execvp
+Aim: Write a program to add two integers (received via the command line) and compile it to an executable named "myadder". Now write another program that creates a new process using a fork system call. Make the child process add two integers by replacing its image with the "myadder" image using execvp system call.
+
+Experiment 6: Process Synchronization using Wait
+Aim: Create a new process using a fork system call. The child process should print the string "PCCSL407" and the parent process should print the string "Operating Systems Lab". Use a wait system call to ensure that the output displayed is "PCCSL407 Operating Systems Lab".
+
+Experiment 7: Inter-process Communication (IPC)
+Aim: Implement Inter-process Communication using three separate techniques:
+  (a) Pipe: Evaluate an expression. The first process evaluates part of it, the second evaluates another part and sends it to the first process which evaluates the final expression and displays it.
+  (b) Message Queue: The first process sends a string to the second process. The second process reverses the received string and sends it back. The first process checks if the string is a palindrome.
+  (c) Shared Memory: The first process sends three strings to the second process. The second process concatenates them with whitespace, sends it back, and the first process prints the concatenated string in flipped case.
+
+Experiment 8: Multithreaded Statistical Calculator
+Aim: Write a multithreaded program that calculates the mean, median, and standard deviation for a list of integers. This program should receive a series of integers on the command line or user input and create three separate worker threads updating global variables.
+
+Experiment 9: CPU Scheduling Algorithms Simulation
+Aim: Input a list of processes, their CPU burst times, arrival times, and priorities. Simulate FCFS, SRTF, non-preemptive priority (larger number implies higher priority), and RR (quantum = 3 units) scheduling algorithms, determining which results in the minimum average waiting time.
+
+Experiment 10: Semaphores - Readers-Writers Problem
+Aim: Use semaphores to solve the readers-writers problem with writers being given priority over readers.
+
+Experiment 11: Banker's Deadlock Avoidance Algorithm
+Aim: Obtain a deadlock-free process mix and simulate the Banker's algorithm to determine a safe execution sequence.
+
+Experiment 12: Deadlock Detection Algorithm
+Aim: Obtain a process mix and determine if the system is currently deadlocked.
+
+Experiment 13: Semaphores - Dining Philosophers Problem
+Aim: Implement a deadlock-free semaphore-based solution for the dining philosophers problem.
+
+Experiment 14: Paging Memory Address Translation
+Aim: Simulate address translation in a paging scheme. The program receives the size of the virtual address space (in MB), page size (in KB), and a virtual address (in decimal). Output the physical address in <framenumber, offset> format, simulating page table misses where applicable.
+
+Experiment 15: Page Replacement Algorithms Simulation
+Aim: Simulate FIFO, LRU, and Optimal page-replacement algorithms on a randomly generated page-reference string (values 0 to 9). Record and compare page faults given a length and frame allocation capacity passed as arguments.
+
+Experiment 16: Disk Scheduling Algorithms Simulation
+Aim: Simulate SSTF, LOOK, and C-SCAN disk-scheduling algorithms on a disk with 5,000 cylinders (0 to 4999) servicing a series of 10 random cylinder requests given an initial disk head position.
+
+feel free to ask any questions - to help you work on this better 

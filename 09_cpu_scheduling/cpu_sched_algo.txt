@@ -1,8 +1,0 @@
-1. Start.
-2. Define a structure for processes (ID, Arrival Time, Burst Time, Priority, etc.).
-3. FCFS: Sort/Process based on arrival time. Start time is current time or arrival time.
-4. Priority: Pick the process with the highest priority (lowest value) among those that have arrived. Complete it fully.
-5. Round Robin: Use a time quantum (q=3). Run each process for 'q' time. If not finished, move to next arrived process and circle back.
-6. Calculate Waiting Time (WT = Start Time - Arrival Time) and Turnaround Time (TAT = Exit Time - Arrival Time).
-7. Print averages for each algorithm.
-8. Stop.

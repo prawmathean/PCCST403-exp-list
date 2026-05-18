@@ -1,0 +1,15 @@
+Algorithm for Experiment 2: Machine Info Gathering via /proc
+
+1. Start the program.
+2. Open the file "/proc/cpuinfo" in read mode.
+3. Count the number of lines starting with "processor" to find the number of CPU cores.
+4. Open "/proc/meminfo" and find "MemTotal" and "MemFree" values.
+5. Calculate the free memory fraction as (MemFree / MemTotal) * 100.
+6. Open "/proc/stat" to find the "processes" count, which indicates total forks since boot.
+7. Open "/proc/loadavg" to get the current number of running processes.
+8. If a PID is provided as a command-line argument:
+   a. Open "/proc/<PID>/status".
+   b. Look for "voluntary_ctxt_switches" and "nonvoluntary_ctxt_switches".
+   c. Sum these values to get total context switches.
+9. Print all the gathered information.
+10. Stop the program.

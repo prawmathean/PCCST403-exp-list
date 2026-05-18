@@ -1,0 +1,15 @@
+Experiment 1: Linux Command Familiarization
+
+List of commands to be familiar with:
+1. ps      - Display information about current processes.
+2. strace  - Trace system calls and signals.
+3. gdb     - The GNU Debugger.
+4. strings - Find printable strings in a binary file.
+5. objdump - Display info from object files (like disassembly).
+6. nm      - List symbols from object files.
+7. file    - Determine the type of a file.
+8. od      - Octal dump (shows file content in various formats).
+9. xxd     - Create a hex dump or convert back.
+10. time   - Measure how long a command takes to run.
+11. fuser  - Identify processes using a specific file/socket.
+12. top    - Real-time view of system processes.

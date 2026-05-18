@@ -1,0 +1,26 @@
+Algorithm for Experiment 10: Readers-Writers with Writer Priority
+
+1. Initialize semaphores:
+   a. resource_access: Binary semaphore for resource access.
+   b. read_count_access: Binary semaphore for updating read_count.
+   c. write_count_access: Binary semaphore for updating write_count.
+   d. service_queue: Semaphore to ensure writers have priority over readers.
+2. Reader Logic:
+   a. Wait on 'service_queue'.
+   b. Wait on 'read_count_access' and increment 'read_count'.
+   c. If 'read_count' is 1, wait on 'resource_access' (lock the book).
+   d. Post 'read_count_access' and 'service_queue'.
+   e. Perform reading.
+   f. Wait on 'read_count_access' and decrement 'read_count'.
+   g. If 'read_count' is 0, post 'resource_access' (unlock the book).
+   h. Post 'read_count_access'.
+3. Writer Logic:
+   a. Wait on 'write_count_access' and increment 'write_count'.
+   b. If 'write_count' is 1, wait on 'service_queue' (block new readers).
+   c. Post 'write_count_access'.
+   d. Wait on 'resource_access' and perform writing.
+   e. Post 'resource_access'.
+   f. Wait on 'write_count_access' and decrement 'write_count'.
+   g. If 'write_count' is 0, post 'service_queue' (unblock readers).
+   h. Post 'write_count_access'.
+4. Start multiple reader and writer threads to demonstrate the priority and sync.

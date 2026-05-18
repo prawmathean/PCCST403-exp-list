@@ -1,9 +1,0 @@
-1. Start.
-2. Read the number of elements and the array from the user.
-3. Create three POSIX threads:
-   - Thread 1: Calculates the Mean by summing all elements and dividing by count.
-   - Thread 2: Sorts the array and finds the Median (middle element or average of two middle elements).
-   - Thread 3: Calculates Standard Deviation using the formula sqrt(sum((x - mean)^2) / n).
-4. Use pthread_join to wait for all threads to complete.
-5. Print the results stored in global variables.
-6. Stop.

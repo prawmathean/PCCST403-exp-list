@@ -1,0 +1,18 @@
+Algorithm for Experiment 4: Process Creation using fork()
+
+1. Start the program.
+2. Get and print the current process ID using getpid().
+3. Call the fork() system call to create a child process.
+4. If fork() returns -1:
+   a. Print an error message and exit.
+5. If fork() returns 0:
+   a. This is the child process.
+   b. Print the child's PID and its parent's PID (using getppid()).
+   c. Use the system() call to execute 'pstree -p <PID>' to visualize the process hierarchy.
+   d. Exit the child process.
+6. If fork() returns a positive value (the child's PID):
+   a. This is the parent process.
+   b. Use wait(NULL) to wait for the child process to terminate.
+   c. Print a message indicating the child has finished.
+   d. Exit the parent process.
+7. Stop the program.

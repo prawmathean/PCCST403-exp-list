@@ -1,0 +1,9 @@
+Algorithm for Experiment 1: Linux Command Familiarization
+
+1. Open the Linux terminal.
+2. For each command listed (ps, strace, gdb, etc.):
+   a. Type the command followed by '--help' or use 'man <command>' to read its manual.
+   b. Execute the command with basic flags to observe the output.
+   c. For binary inspection tools like strings, nm, and objdump, use an executable file as an argument.
+   d. Use 'time' before another command to check its execution duration.
+3. Note down the purpose and a few common flags for each command in the lab record.

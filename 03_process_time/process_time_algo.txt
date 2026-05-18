@@ -1,0 +1,11 @@
+Algorithm for Experiment 3: Process Execution Time Analysis
+
+1. Start the program.
+2. Use the time() function to print the current system time in seconds.
+3. Define a function or loop to perform some computational task (to accumulate CPU time).
+4. Call the times() system call to populate a 'tms' structure with process timing information.
+5. Retrieve the number of clock ticks per second using sysconf(_SC_CLK_TCK).
+6. Extract 'tms_utime' (user mode time) and 'tms_stime' (kernel mode time) from the structure.
+7. Convert the ticks to seconds by dividing by the ticks per second value.
+8. Print the user and kernel mode execution times.
+9. Stop the program.

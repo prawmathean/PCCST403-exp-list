@@ -1,0 +1,23 @@
+Algorithm for Experiment 9: CPU Scheduling Algorithms
+
+1. Define a 'Process' structure to store PID, Arrival Time (AT), Burst Time (BT), Priority, Completion Time (CT), Turnaround Time (TAT), and Waiting Time (WT).
+2. Read process details from the user.
+3. FCFS (First Come First Served):
+   a. Sort processes based on AT.
+   b. Process each one in sequence, updating the current system time.
+   c. CT = current_time + BT.
+4. Round Robin (RR):
+   a. Use a fixed time quantum (q).
+   b. Maintain a queue of processes.
+   c. Give each process 'q' amount of time. If it doesn't finish, put it back in the queue.
+   d. Continue until all processes have remaining_bt = 0.
+5. SRTF (Shortest Remaining Time First):
+   a. At each time unit, pick the process with the shortest remaining burst time among those that have arrived.
+   b. Preempt if a shorter process arrives.
+6. Non-Preemptive Priority:
+   a. Among arrived processes, pick the one with the highest priority (lowest/highest number as per rule).
+   b. Run it to completion.
+7. For each algorithm, calculate:
+   a. TAT = CT - AT.
+   b. WT = TAT - BT.
+   c. Average WT and average TAT for the entire process set.
