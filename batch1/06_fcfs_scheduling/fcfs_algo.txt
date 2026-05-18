@@ -1,0 +1,14 @@
+Algorithm for FCFS Scheduling (Batch 1)
+
+1. Define a structure for processes with AT, BT, CT, TAT, and WT.
+2. Read the number of processes and their Arrival Time (AT) and Burst Time (BT).
+3. Sort the processes based on their Arrival Time.
+4. Initialize current_time = 0.
+5. For each process:
+   a. If current_time < AT, set current_time = AT (CPU is idle).
+   b. current_time = current_time + BT.
+   c. CT = current_time.
+   d. TAT = CT - AT.
+   e. WT = TAT - BT.
+6. Calculate average WT and TAT.
+7. Print the Gantt chart metrics for each process.

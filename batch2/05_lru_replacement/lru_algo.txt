@@ -1,0 +1,13 @@
+Algorithm for LRU Page Replacement (Batch 2)
+
+1. Read the number of frames and the page reference string.
+2. Initialize the frames to empty (-1) and a timestamp array 'last_used' to 0.
+3. For each page in the reference string:
+   a. Check if the page is already in one of the frames.
+   b. If found: Update the 'last_used' timestamp for that frame to the current step number.
+   c. If not found (Page Fault):
+      i. Find the frame that has the minimum 'last_used' timestamp (the one used longest ago).
+      ii. Replace the page in that frame with the current page.
+      iii. Update its 'last_used' timestamp to the current step number.
+      iv. Increment the fault counter.
+4. Print the state of frames at each step and the total number of page faults.

@@ -1,0 +1,21 @@
+Algorithm for Experiment 13: Deadlock-Free Dining Philosophers
+
+1. Start the program.
+2. Initialize an array of N semaphores, where each represents a fork. All initialized to 1 (available).
+3. Define a philosopher thread function:
+   a. Keep the philosopher in an infinite loop of thinking and eating.
+   b. Thinking: Sleep for a random amount of time.
+   c. Pick up forks (Deadlock Avoidance strategy):
+      i. If the philosopher's ID is even:
+         - Wait for the left fork (ID).
+         - Wait for the right fork ((ID + 1) % N).
+      ii. If the philosopher's ID is odd:
+         - Wait for the right fork ((ID + 1) % N).
+         - Wait for the left fork (ID).
+   d. Eating: Sleep for a random amount of time.
+   e. Put down forks:
+      - Post the left fork.
+      - Post the right fork.
+4. Create N philosopher threads using pthread_create().
+5. Wait for the threads to finish using pthread_join().
+6. Stop the program.

@@ -1,0 +1,16 @@
+Algorithm for Non-Preemptive Priority Scheduling (Batch 2)
+
+1. Create a structure to hold PID, AT, BT, Priority, CT, TAT, and WT.
+2. Read the process details from the user.
+3. Initialize current_time = 0 and completed_count = 0.
+4. While completed_count < total_processes:
+   a. Find all processes that have arrived (AT <= current_time) and are not finished.
+   b. From these processes, select the one with the highest priority.
+   c. If no process has arrived, increment current_time.
+   d. If a process is selected:
+      i. current_time = current_time + BT.
+      ii. CT = current_time.
+      iii. TAT = CT - AT.
+      iv. WT = TAT - BT.
+      v. Mark process as finished and increment completed_count.
+5. Calculate and print the average WT and TAT.

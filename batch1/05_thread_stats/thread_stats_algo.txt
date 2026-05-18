@@ -1,0 +1,17 @@
+Algorithm for Experiment 8: Multithreaded Statistical Calculator
+
+1. Start the program.
+2. Accept a list of integers as command-line arguments.
+3. Allocate an array and store these integers.
+4. Define three functions for worker threads:
+   a. calc_mean: Sums all numbers and divides by the count.
+   b. calc_median: Sorts the array and finds the middle value.
+   c. calc_std_dev: Calculates the square root of the average squared difference from the mean.
+5. Create three separate threads using pthread_create():
+   a. Thread 1 calls calc_mean.
+   b. Thread 2 calls calc_median.
+   c. Thread 3 calls calc_std_dev (ensure mean is calculated first).
+6. Use pthread_join() to wait for all threads to complete their execution.
+7. Print the calculated global variables (mean, median, and standard deviation).
+8. Free any dynamically allocated memory and exit.
+9. Stop the program.

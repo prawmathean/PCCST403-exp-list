@@ -1,0 +1,25 @@
+Algorithm for Experiment 7: Inter-Process Communication (IPC)
+
+(a) Pipe:
+1. Initialize a pipe using the pipe() system call.
+2. Fork a child process.
+3. In child: Close the read end. Compute (a+b). Write the result to the pipe and exit.
+4. In parent: Close the write end. Wait for the child. Read the sum from the pipe. Compute Final Result = sum * c.
+5. Print the result.
+
+(b) Message Queue:
+1. Create a message queue using msgget().
+2. Fork a child process.
+3. In parent (P1): Take a string input. Send it to the queue with msg_type = 1.
+4. In child (P2): Receive the message with type 1. Reverse the string. Send the reversed string back with msg_type = 2.
+5. In parent (P1): Receive the message with type 2. Compare it with the original string to check for palindrome.
+6. Delete the message queue using msgctl().
+
+(c) Shared Memory:
+1. Create a shared memory segment using shmget().
+2. Attach the segment to the process's address space using shmat().
+3. Fork a child process.
+4. In parent (P1): Input 3 strings and concatenate them into the shared memory.
+5. In child (P2): Read the string. Flip the case of each character in-place in the shared memory.
+6. In parent (P1): After the child finishes, print the modified string from shared memory.
+7. Detach and remove the shared memory.

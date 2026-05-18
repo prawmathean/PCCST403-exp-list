@@ -1,0 +1,18 @@
+Algorithm for Experiment 14: Paging Address Translation Simulation
+
+1. Start the program.
+2. Read the following inputs from the user:
+   a. Virtual address space size in MB.
+   b. Page size in KB.
+   c. Virtual address in decimal.
+3. Convert the address space size and page size to bytes:
+   a. space_bytes = size_mb * 1024 * 1024.
+   b. page_bytes = size_kb * 1024.
+4. Check if the input virtual address is valid (within the address space).
+5. Calculate the Page Number:
+   - page_number = virtual_address / page_bytes.
+6. Calculate the Offset within the page:
+   - offset = virtual_address % page_bytes.
+7. Output the Page Number and Offset.
+8. (Optional) Simulate a frame mapping and output the physical address as a <frame_number, offset> pair.
+9. Stop the program.

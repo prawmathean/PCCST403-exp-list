@@ -1,0 +1,10 @@
+Algorithm for C-SCAN Disk Scheduling (Batch 2)
+
+1. Read the disk size (e.g., 5000), initial head position, and disk requests.
+2. Sort the request array in ascending order.
+3. Determine the point in the sorted array where the head is currently located.
+4. Move the head from its current position towards the end of the disk (e.g., 4999), servicing all requests in between.
+5. After reaching the end of the disk, "jump" the head back to the very beginning (0).
+6. Continue moving the head towards the initial position, servicing all remaining requests.
+7. Total head movement is calculated as: (Distance from head to end) + (Total disk size) + (Distance from 0 to the last serviced request before the original head position).
+8. Print the servicing sequence and total movement.
